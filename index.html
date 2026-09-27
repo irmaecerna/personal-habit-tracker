@@ -64,24 +64,26 @@
 		.section-title { display:flex; justify-content:space-between; align-items:center; margin:28px 0 12px; }
 		h2 { font-size:1.15rem; margin:0; }
 		.habit-list { display:grid; gap:12px; }
-		.habit { display:flex; align-items:center; gap:11px; padding:14px 16px; background:var(--primary-pale); }
-		.check { width:30px; height:30px; padding:0; border:2px solid var(--border); border-radius:9px; color:#fff; background:var(--card); font-size:1rem; font-weight:400; flex-shrink:0; align-self:flex-start; margin-top:2px; }
+		.habit { display:flex; align-items:center; gap:14px; padding:16px; background:var(--primary-pale); }
+		.check { width:44px; height:44px; padding:0; border:2px solid var(--border); border-radius:14px; color:#fff; background:var(--card); font-size:1.15rem; font-weight:400; flex-shrink:0; }
+		.habit.done { background:#E6E9E2; opacity:.8; }
 		.habit.done .check { background:var(--success); border-color:var(--success); }
 		.habit.done h3 { text-decoration:line-through; color:var(--muted); }
-		.habit-content { flex:1; min-width:0; }
-		.habit-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-		h3 { margin:0 0 4px; font-size:1rem; }
-		.streak { flex:0 0 auto; color:var(--primary); font-size:1.15rem; font-weight:800; white-space:nowrap; }
+		.habit-content { flex:1; min-width:0; display:flex; flex-direction:column; gap:4px; }
+		.habit-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+		h3 { margin:0; font-size:1.05rem; font-weight:800; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+		.streak { flex:0 0 auto; color:var(--primary); font-size:1rem; font-weight:800; white-space:nowrap; }
 		.fire { display:inline-block; }
 		.fire-pop { animation:firePop .45s ease; }
 		@keyframes firePop { 0% { transform:scale(1); } 45% { transform:scale(2.1); } 100% { transform:scale(1); } }
-		.habit-meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; color:var(--muted); font-size:.82rem; }
-		.emoji { width:48px; height:48px; flex-shrink:0; border-radius:50%; background:var(--primary-light); display:flex; align-items:center; justify-content:center; font-size:1.5rem; line-height:1; }
-		.actions { display:flex; align-items:center; gap:4px; align-self:flex-start; }
-		.more { background:transparent; color:var(--muted); padding:5px 8px; font-size:1.2rem; line-height:1; }
-		.skip { display:block; width:max-content; background:var(--card); border:1px solid var(--border); color:var(--muted); padding:7px 10px; margin-top:8px; font-size:.78rem; }
-		.skipped { opacity:.7; }
-		.skipped .check { background:var(--card); border-color:var(--border); color:var(--nav-disabled); font-size:.85rem; }
+		.habit-meta { display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:.88rem; }
+		.emoji { width:56px; height:56px; flex-shrink:0; border-radius:50%; background:var(--primary-light); display:flex; align-items:center; justify-content:center; font-size:1.8rem; line-height:1; }
+		.habit.done .emoji { background:var(--success-light); }
+		.manage-list { display:grid; gap:8px; max-height:50vh; overflow:auto; margin-top:14px; }
+		.manage-row { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--primary-pale); padding:10px 12px; border-radius:12px; }
+		.manage-row .emoji { width:38px; height:38px; font-size:1.2rem; }
+		.manage-row-name { flex:1; min-width:0; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+		.manage-row-arrow { color:var(--muted); font-size:1rem; }
 		dialog { border:0; border-radius:18px; padding:24px; width:min(100% - 32px,400px); box-shadow:0 15px 60px #1f293733; }
 		dialog::backdrop { background:#1f293755; }
 		form { display:grid; gap:14px; margin-top:18px; position:relative; }
@@ -110,7 +112,7 @@
 		.danger { margin-right:auto; background:var(--error-light); color:var(--error); }
 		.toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(12px); background:var(--text); color:#fff; padding:11px 18px; border-radius:10px; font-size:.86rem; font-weight:700; opacity:0; pointer-events:none; transition:.25s; z-index:10; }
 		.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-		@media(max-width:560px) { header { align-items:center; flex-direction:row; margin-bottom:20px; } header h1 { font-size:1.65rem; } header p { font-size:.85rem; } .icon-btn { padding:9px 10px; font-size:1rem; } .week-nav { padding:9px 10px; font-size:1rem; } .card { padding:15px; } .habit { gap:8px; padding:11px 12px; } .emoji { width:40px; height:40px; font-size:1.25rem; } .habit-heading { gap:7px; } .streak { font-size:1rem; } .skip { padding:6px 9px; font-size:.74rem; } .more { padding:4px 6px; } .week-days { grid-template-columns:repeat(4,1fr); } dialog { width:calc(100% - 24px); max-height:90vh; overflow:auto; padding:16px; } .overview-grid { gap:8px; } .overview-card { padding:12px; } .overview-card .ov-number { font-size:1.3rem; } }
+		@media(max-width:560px) { header { align-items:center; flex-direction:row; margin-bottom:20px; } header h1 { font-size:1.65rem; } header p { font-size:.85rem; } .icon-btn { padding:9px 10px; font-size:1rem; } .week-nav { padding:9px 10px; font-size:1rem; } .card { padding:15px; } .habit { gap:10px; padding:12px; } .emoji { width:44px; height:44px; font-size:1.4rem; } .check { width:38px; height:38px; font-size:1rem; } .habit-heading { gap:7px; } .streak { font-size:.9rem; } .week-days { grid-template-columns:repeat(4,1fr); } dialog { width:calc(100% - 24px); max-height:90vh; overflow:auto; padding:16px; } .overview-grid { gap:8px; } .overview-card { padding:12px; } .overview-card .ov-number { font-size:1.3rem; } }
 	</style>
 </head>
 <body>
@@ -121,6 +123,7 @@
 				<button type="button" class="icon-btn" id="settingsBtn" aria-haspopup="true" aria-expanded="false" aria-label="Settings" title="Settings">⚙️</button>
 				<div class="settings-menu" id="settingsMenu" role="menu" hidden>
 					<button type="button" class="menu-item" id="addBtn" role="menuitem"><span class="menu-icon">➕</span> Add Habit</button>
+					<button type="button" class="menu-item" id="manageBtn" role="menuitem"><span class="menu-icon">✏️</span> Manage Habits</button>
 					<div class="menu-divider"></div>
 					<button type="button" class="menu-item" id="exportBtn" role="menuitem"><span class="menu-icon">⬇️</span> Export data</button>
 					<button type="button" class="menu-item" id="importBtn" role="menuitem"><span class="menu-icon">⬆️</span> Import data</button>
@@ -139,6 +142,7 @@
 	<div class="toast" id="toast"></div>
 
 	<dialog id="habitDialog"><h2 id="dialogTitle">Add a habit</h2><form id="habitForm"><label>Emoji<div class="emoji-picker"><button type="button" class="emoji-trigger" id="emojiTrigger" aria-label="Choose an emoji" aria-expanded="false">➕</button><div class="emoji-panel" id="emojiPanel" hidden><input class="emoji-search" id="emojiSearch" placeholder="Search emojis" aria-label="Search emojis" /><div class="emoji-options" id="emojiOptions"></div></div><input type="hidden" id="habitEmoji" value="" required /></div></label><label>Habit name<input id="habitName" required maxlength="60" placeholder="e.g. Read for 20 minutes" /></label><label>Note<input id="habitNote" maxlength="80" placeholder="Optional note" /></label><fieldset><legend>Frequency</legend><span class="error" id="frequencyError" role="alert"></span></fieldset><div class="form-actions"><button type="button" class="danger" id="deleteHabitBtn" hidden>🗑️ Delete</button><button type="button" class="cancel" id="cancelBtn">Cancel</button><button class="primary" id="saveHabitBtn">Add habit</button></div></form></dialog>
+	<dialog id="manageDialog"><h2>Manage Habits</h2><div class="manage-list" id="manageList"></div><div class="form-actions"><button type="button" class="cancel" id="manageCloseBtn">Close</button></div></dialog>
 	<script>
 		const key='habit-tracker-data';
 		function localDateKey(date=new Date()){const year=date.getFullYear(), month=String(date.getMonth()+1).padStart(2,'0'), day=String(date.getDate()).padStart(2,'0'); return `${year}-${month}-${day}`;}
@@ -196,7 +200,6 @@
 				completions: raw.completions!=null?raw.completions:history.length,
 				streak:0,
 				lastCompleted: raw.lastCompleted||null,
-				skippedDate: raw.skippedDate||null,
 				justCompletedDate: null,
 				done: raw.lastCompleted===todayKey()?Boolean(raw.done):false
 			};
@@ -221,14 +224,10 @@
 			const now=new Date(`${todayK}T12:00:00`);
 			const monthB=periodBounds(now,'Monthly');
 			const daysInMonth=Math.round((monthB.end-monthB.start)/86400000)+1;
-			const elapsedDays=Math.round((now-monthB.start)/86400000)+1;
-			let expected=0, actual=0;
-			habits.forEach(h=>{
-				const rate=h.frequencyType==='Daily'?1:h.frequencyType==='Weekly'?h.target/7:h.target/daysInMonth;
-				expected+=rate*elapsedDays;
-				actual+=h.history.filter(d=>d>=monthB.startKey&&d<=monthB.endKey).length;
-			});
-			const consistencyPct=expected>0?Math.min(100,Math.round(actual/expected*100)):0;
+			const activeDaySet=new Set();
+			habits.forEach(h=>{h.history.forEach(d=>{if(d>=monthB.startKey&&d<=todayK)activeDaySet.add(d);});});
+			const activeDays=activeDaySet.size;
+			const consistencyPct=daysInMonth>0?Math.round(activeDays/daysInMonth*100):0;
 
 			const activeCount=habits.filter(h=>h.streak>0).length;
 			let bestHabit=null;
@@ -239,7 +238,7 @@
 			$('#overviewGrid').innerHTML=habits.length?`
 				<div class="overview-card today"><div class="ov-head"><span class="ov-icon">📅</span><span class="ov-label">Today</span></div><div class="ov-number">${completedToday} / ${totalToday}</div><div class="ov-sub">${pctToday}% of today's habits</div></div>
 				<div class="overview-card week"><div class="ov-head"><span class="ov-icon">🗓️</span><span class="ov-label">This Week</span></div><div class="ov-number">${weekActual} / ${weekGoal}</div><div class="ov-sub">Progress toward weekly goals</div></div>
-				<div class="overview-card consistency"><div class="ov-head"><span class="ov-icon">🎯</span><span class="ov-label">Consistency</span></div><div class="ov-number">${consistencyPct}%</div><div class="ov-sub">this month</div></div>
+				<div class="overview-card consistency"><div class="ov-head"><span class="ov-icon">🎯</span><span class="ov-label">Consistency</span></div><div class="ov-number">${consistencyPct}%</div><div class="ov-sub">${activeDays} of ${daysInMonth} days this month</div></div>
 				<div class="overview-card streaks"><div class="ov-head"><span class="ov-icon">🔥</span><span class="ov-label">Streaks</span></div><div class="ov-number">${activeCount} active</div><div class="ov-sub">Best: ${bestValue} ${bestUnit}</div></div>
 			`:'';
 		}
@@ -287,30 +286,38 @@
 		}
 
 		function habitCard(h,dateKeyStr){
-			const done=h.history.includes(dateKeyStr), skipped=h.skippedDate===dateKeyStr, future=dateKeyStr>todayKey(), skipLabel=dateKeyStr===todayKey()?'Skip Today':'Skip Day';
+			const done=h.history.includes(dateKeyStr), future=dateKeyStr>todayKey();
 			let progressHtml='';
-			if(h.frequencyType==='Weekly'||h.frequencyType==='Monthly'){
+			if(h.frequencyType==='Daily'){
+				const bounds=periodBounds(new Date(`${dateKeyStr}T12:00:00`),'Weekly');
+				const count=countInPeriod(h,bounds);
+				const pct=Math.min(100,Math.round((count/7)*100));
+				progressHtml=`<div class="habit-meta"><span>${count} of 7 days this week</span></div><div class="progress"><i style="width:${pct}%"></i></div>`;
+			}else if(h.frequencyType==='Weekly'||h.frequencyType==='Monthly'){
 				const bounds=periodBounds(new Date(`${dateKeyStr}T12:00:00`),h.frequencyType);
 				const count=countInPeriod(h,bounds), target=Math.max(1,h.target||1);
 				const pct=Math.min(100,Math.round((count/target)*100));
 				const periodWord=h.frequencyType==='Weekly'?'week':'month';
 				progressHtml=`<div class="habit-meta"><span>${count} of ${target} this ${periodWord}</span></div><div class="progress"><i style="width:${pct}%"></i></div>`;
 			}
-			return `<article class="card habit ${done?'done':''} ${skipped?'skipped':''}"><button class="check" data-id="${h.id}" aria-label="Mark ${h.name} complete" ${(skipped||future)?'disabled':''}>${skipped?'⏭️':done?'✓':''}</button><span class="emoji" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><div class="habit-content"><div class="habit-heading"><h3>${escapeHtml(h.name)}</h3><span class="streak">${skipped?'':`<span class="fire ${h.justCompletedDate===dateKeyStr?'fire-pop':''}">🔥</span> ${h.streak||0}`}</span></div>${progressHtml}${done&&!skipped?'':`<button class="skip" data-skip="${h.id}" ${future?'disabled':''}>${skipped?'Undo Skip':skipLabel}</button>`}</div><div class="actions"><button class="more" data-edit="${h.id}" aria-label="Edit or delete ${h.name}" title="More options">⋮</button></div></article>`;
+			return `<article class="card habit ${done?'done':''}"><span class="emoji" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><div class="habit-content"><div class="habit-heading"><h3>${escapeHtml(h.name)}</h3><span class="streak"><span class="fire ${h.justCompletedDate===dateKeyStr?'fire-pop':''}">🔥</span> ${h.streak||0}</span></div>${progressHtml}</div><button class="check" data-id="${h.id}" aria-label="Mark ${h.name} complete" ${future?'disabled':''}>${done?'✓':''}</button></article>`;
 		}
 		habits.forEach(recalculateStreak);
 		function render(){
 			renderOverview(); renderWeek();
 			$('#habitTitle').textContent=selectedDate===todayKey()?'Today’s Habits':`Habits for ${formatDate(new Date(`${selectedDate}T12:00:00`),{weekday:'long',month:'long',day:'numeric'})}`;
-			$('#habitList').innerHTML=habits.length?habits.map(h=>habitCard(h,selectedDate)).join(''):'<div class="card"><p>No habits yet. Add one to get started.</p></div>';
+			const typeRank={Daily:0,Weekly:1,Monthly:2};
+			const sortedHabits=[...habits].sort((a,b)=>{
+				const doneA=a.history.includes(selectedDate)?1:0, doneB=b.history.includes(selectedDate)?1:0;
+				if(doneA!==doneB)return doneA-doneB;
+				return (typeRank[a.frequencyType]??0)-(typeRank[b.frequencyType]??0);
+			});
+			$('#habitList').innerHTML=sortedHabits.length?sortedHabits.map(h=>habitCard(h,selectedDate)).join(''):'<div class="card"><p>No habits yet. Add one to get started.</p></div>';
 		}
 		function escapeHtml(s){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 		function handleHabitClick(e){
-			const id=Number(e.target.dataset.id||e.target.dataset.edit||e.target.dataset.delete||e.target.dataset.skip),h=habits.find(x=>x.id===id); if(!h)return;
+			const id=Number(e.target.dataset.id),h=habits.find(x=>x.id===id); if(!h)return;
 			const date=selectedDate; if(date>todayKey())return;
-			if(e.target.dataset.skip){if(h.skippedDate===date){h.skippedDate=null;}else{h.skippedDate=date;} recalculateStreak(h); save(); return;}
-			if(e.target.dataset.edit){openHabitDialog(h); return;}
-			if(h.skippedDate===date)return;
 			const wasDone=h.history.includes(date);
 			h.completions=Math.max(0,h.completions+(wasDone?-1:1));
 			const newHistory=wasDone?h.history.filter(day=>day!==date):[...h.history,date];
@@ -370,7 +377,7 @@
 			$('#frequencyError').textContent='';
 			const values={emoji:$('#habitEmoji').value,name:nameVal,note:$('#habitNote').value.trim(),frequencyType:frequency,target:target};
 			if(editingHabitId){const habit=habits.find(h=>h.id===editingHabitId); Object.assign(habit,values); recalculateStreak(habit);}
-			else{habits.push({id:Date.now(),...values,done:false,streak:0,completions:0,history:[],lastCompleted:null,skippedDate:null,justCompletedDate:null});}
+			else{habits.push({id:Date.now(),...values,done:false,streak:0,completions:0,history:[],lastCompleted:null,justCompletedDate:null});}
 			save();
 			editingHabitId=null;
 			e.target.reset();
@@ -390,6 +397,19 @@
 		document.addEventListener('click',e=>{if(!settingsMenu.hidden && !settingsMenu.contains(e.target) && e.target!==settingsBtn)closeSettingsMenu();});
 		document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSettingsMenu();});
 		$('#addBtn').onclick=()=>{closeSettingsMenu(); openHabitDialog();};
+
+		// ---- Manage Habits ----
+		function renderManageList(){
+			$('#manageList').innerHTML=habits.length?habits.map(h=>`<button type="button" class="manage-row" data-manage-edit="${h.id}"><span class="emoji" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><span class="manage-row-name">${escapeHtml(h.name)}</span><span class="manage-row-arrow">›</span></button>`).join(''):'<p class="label">No habits yet.</p>';
+		}
+		$('#manageBtn').onclick=()=>{closeSettingsMenu(); renderManageList(); $('#manageDialog').showModal();};
+		$('#manageCloseBtn').onclick=()=>$('#manageDialog').close();
+		$('#manageList').addEventListener('click',e=>{
+			const btn=e.target.closest('[data-manage-edit]'); if(!btn)return;
+			const habit=habits.find(h=>h.id===Number(btn.dataset.manageEdit)); if(!habit)return;
+			$('#manageDialog').close();
+			openHabitDialog(habit);
+		});
 
 		// ---- Export / Import ----
 		let toastTimer=null;
