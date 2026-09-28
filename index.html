@@ -7,15 +7,15 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap');
 		:root {
-			--bg:#F8FAFC; --card:#FFFFFF; --border:#E5E7EB;
-			--text:#1F2937; --muted:#64748B;
-			--primary:#0F7A4D; --primary-light:#E8F7EE; --primary-pale:#F2FAF6;
-			--blue:#3B82F6; --blue-light:#E7F1FF;
-			--purple:#8B5CF6; --purple-light:#F3E8FF;
-			--orange:#F59E0B; --orange-light:#FFF3E7;
+			--bg:#FAFAF8; --card:#FFFFFF; --border:#E9E7E2;
+			--text:#2B2B28; --muted:#6B7280;
+			--primary:#458B73; --primary-light:#E9F1EE; --primary-pale:#F4F8F6;
+			--coral:#F26076; --coral-light:#FDECEF;
+			--orange:#FF9760; --orange-light:#FFF3EC;
+			--gold:#FFD150; --gold-light:#FFF9EA;
 			--success:#22C55E; --success-light:#DCFCE7;
 			--error:#EF4444; --error-light:#FEE2E2;
-			--nav-active:#0F7A4D; --nav-inactive:#94A3B8; --nav-disabled:#CBD5E1;
+			--nav-active:#458B73; --nav-inactive:#B0B7B4; --nav-disabled:#D8DCDA;
 		}
 		* { box-sizing:border-box; }
 		body { margin:0; font-family:'Roboto',sans-serif; color:var(--text); background:var(--bg); }
@@ -29,9 +29,6 @@
 		.menu-item:hover, .menu-item:focus { background:var(--primary-light); }
 		.menu-icon { font-size:1.05rem; }
 		.menu-divider { height:1px; background:var(--border); margin:4px 2px; }
-		.menu-item.placeholder { color:var(--muted); cursor:default; justify-content:space-between; }
-		.menu-item.placeholder:hover { background:transparent; }
-		.soon-tag { font-size:.68rem; background:var(--border); color:var(--muted); padding:3px 8px; border-radius:999px; font-weight:700; white-space:nowrap; }
 		.week-bar { display:flex; align-items:center; gap:8px; margin-bottom:24px; }
 		.week-nav { flex:0 0 auto; padding:10px 12px; background:var(--card); color:var(--text); font-size:1.1rem; border:1px solid var(--border); }
 		.week-days { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; flex:1; }
@@ -52,9 +49,9 @@
 		.overview-card .ov-number { font-size:1.6rem; font-weight:800; color:var(--text); }
 		.overview-card .ov-sub { font-size:.78rem; color:var(--muted); }
 		.overview-card.today { background:var(--primary-light); } .overview-card.today .ov-icon { background:var(--primary); }
-		.overview-card.week { background:var(--blue-light); } .overview-card.week .ov-icon { background:var(--blue); }
+		.overview-card.week { background:var(--coral-light); } .overview-card.week .ov-icon { background:var(--coral); }
 		.overview-card.consistency { background:var(--orange-light); } .overview-card.consistency .ov-icon { background:var(--orange); }
-		.overview-card.streaks { background:var(--purple-light); } .overview-card.streaks .ov-icon { background:var(--purple); }
+		.overview-card.streaks { background:var(--gold-light); } .overview-card.streaks .ov-icon { background:var(--gold); }
 		button { border:0; border-radius:10px; padding:12px 17px; font:inherit; font-weight:700; cursor:pointer; }
 		.primary { background:var(--primary); color:#fff; }
 		.card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow:0 5px 20px #1f293710; }
@@ -66,8 +63,8 @@
 		.habit-list { display:grid; gap:12px; }
 		.habit { display:flex; align-items:center; gap:14px; padding:16px; background:var(--primary-pale); }
 		.check { width:44px; height:44px; padding:0; border:2px solid var(--border); border-radius:14px; color:#fff; background:var(--card); font-size:1.15rem; font-weight:400; flex-shrink:0; }
-		.habit.done { background:#E6E9E2; opacity:.8; }
-		.habit.done .check { background:var(--success); border-color:var(--success); }
+		.habit.done { background:#E1E1DD; }
+		.habit.done .check { background:#124D1C; border-color:#124D1C; }
 		.habit.done h3 { text-decoration:line-through; color:var(--muted); }
 		.habit-content { flex:1; min-width:0; display:flex; flex-direction:column; gap:4px; }
 		.habit-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; }
@@ -77,8 +74,11 @@
 		.fire-pop { animation:firePop .45s ease; }
 		@keyframes firePop { 0% { transform:scale(1); } 45% { transform:scale(2.1); } 100% { transform:scale(1); } }
 		.habit-meta { display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:.88rem; }
-		.emoji { width:56px; height:56px; flex-shrink:0; border-radius:50%; background:var(--primary-light); display:flex; align-items:center; justify-content:center; font-size:1.8rem; line-height:1; }
-		.habit.done .emoji { background:var(--success-light); }
+		.emoji { width:56px; height:56px; flex-shrink:0; border-radius:50%; background:var(--coral); display:flex; align-items:center; justify-content:center; font-size:1.8rem; line-height:1; }
+		.emoji.c0 { background:var(--coral); }
+		.emoji.c1 { background:var(--orange); }
+		.emoji.c2 { background:var(--gold); }
+		.emoji.c3 { background:var(--primary); }
 		.manage-list { display:grid; gap:8px; max-height:50vh; overflow:auto; margin-top:14px; }
 		.manage-row { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--primary-pale); padding:10px 12px; border-radius:12px; }
 		.manage-row .emoji { width:38px; height:38px; font-size:1.2rem; }
@@ -89,16 +89,22 @@
 		form { display:grid; gap:14px; margin-top:18px; position:relative; }
 		#habitForm { grid-template-columns:54px 1fr; }
 		#habitForm > label:nth-child(3), #habitForm > fieldset, #habitForm > .form-actions { grid-column:1 / -1; }
-		#habitForm > label:first-child { min-width:0; }
-		label { display:grid; gap:6px; color:var(--muted); font-size:.86rem; font-weight:700; }
+		#habitForm > .field { min-width:0; }
+		label, .field { display:grid; gap:6px; color:var(--muted); font-size:.86rem; font-weight:700; }
 		input, select { width:100%; border:1px solid var(--border); border-radius:9px; padding:12px; font:inherit; font-size:16px; color:var(--text); background:var(--card); }
 		.emoji-trigger { width:54px; height:48px; padding:0; border:1px solid var(--border); background:var(--card); font-size:1.7rem; }
-		.emoji-panel { position:absolute; z-index:3; left:0; width:100%; }
+		.emoji-panel { position:absolute; z-index:3; left:0; width:100%; display:grid; gap:4px; padding:8px; background:var(--card); border:1px solid var(--border); border-radius:12px; box-shadow:0 8px 24px #1f293722; }
 		.emoji-panel[hidden] { display:none; }
-		.emoji-search { width:100%; margin:0 0 6px; }
-		.emoji-options { display:grid; grid-template-columns:repeat(6,1fr); gap:4px; width:100%; max-height:190px; overflow:auto; padding:8px; border:1px solid var(--border); border-radius:9px; background:var(--card); box-shadow:0 8px 24px #1f293722; }
-		.emoji-options button { padding:6px; background:transparent; font-size:1.4rem; line-height:1; }
+		.emoji-search { width:100%; margin:0; padding:9px 12px; }
+		.emoji-title { margin:2px 2px 0; color:var(--muted); font-size:.8rem; font-weight:700; }
+		.emoji-options { display:grid; grid-template-columns:repeat(9,1fr); gap:2px; width:100%; max-height:122px; overflow:auto; }
+		.emoji-empty { grid-column:1 / -1; padding:10px 4px; }
+		.emoji-options button { padding:6px 0; background:transparent; border-radius:8px; font-size:1.3rem; line-height:1; }
 		.emoji-options button:hover, .emoji-options button:focus { background:var(--primary-light); }
+		.emoji-tabs { display:grid; grid-template-columns:repeat(9,1fr); margin-top:2px; padding-top:6px; border-top:1px solid var(--border); }
+		.emoji-tab { justify-self:center; width:34px; height:34px; padding:0; background:transparent; border-radius:50%; font-size:1.1rem; line-height:1; filter:grayscale(1); opacity:.55; }
+		.emoji-tab:hover { opacity:.9; }
+		.emoji-tab.active { background:var(--primary-light); filter:none; opacity:1; }
 		fieldset { border:1px solid var(--border); border-radius:9px; padding:12px; display:grid; gap:10px; }
 		legend { color:var(--muted); font-size:.86rem; font-weight:700; padding:0 4px; }
 		.frequency-type { margin:0; }
@@ -112,7 +118,35 @@
 		.danger { margin-right:auto; background:var(--error-light); color:var(--error); }
 		.toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(12px); background:var(--text); color:#fff; padding:11px 18px; border-radius:10px; font-size:.86rem; font-weight:700; opacity:0; pointer-events:none; transition:.25s; z-index:10; }
 		.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-		@media(max-width:560px) { header { align-items:center; flex-direction:row; margin-bottom:20px; } header h1 { font-size:1.65rem; } header p { font-size:.85rem; } .icon-btn { padding:9px 10px; font-size:1rem; } .week-nav { padding:9px 10px; font-size:1rem; } .card { padding:15px; } .habit { gap:10px; padding:12px; } .emoji { width:44px; height:44px; font-size:1.4rem; } .check { width:38px; height:38px; font-size:1rem; } .habit-heading { gap:7px; } .streak { font-size:.9rem; } .week-days { grid-template-columns:repeat(4,1fr); } dialog { width:calc(100% - 24px); max-height:90vh; overflow:auto; padding:16px; } .overview-grid { gap:8px; } .overview-card { padding:12px; } .overview-card .ov-number { font-size:1.3rem; } }
+		@media(max-width:560px) {
+			.app { width:calc(100% - 24px); margin:20px auto; }
+			header { align-items:center; flex-direction:row; margin-bottom:16px; }
+			header h1 { font-size:1.3rem; margin:0 0 3px; }
+			header p { font-size:.8rem; }
+			.icon-btn { padding:8px 9px; font-size:.95rem; }
+			.week-nav { padding:8px 9px; font-size:.95rem; }
+			.section-title { margin:20px 0 10px; }
+			h2 { font-size:1rem; }
+			.card { padding:14px; }
+			.habit { gap:10px; padding:12px; }
+			.emoji { width:40px; height:40px; font-size:1.3rem; }
+			.check { width:36px; height:36px; font-size:.95rem; }
+			.habit-heading { gap:6px; }
+			h3 { font-size:.95rem; }
+			.streak { font-size:.85rem; }
+			.habit-meta { font-size:.78rem; }
+			.week-days { grid-template-columns:repeat(4,1fr); }
+			.week-day { padding:7px 4px; }
+			.week-day strong { font-size:.82rem; }
+			.week-day span { font-size:.72rem; }
+			dialog { width:calc(100% - 24px); max-height:90vh; overflow:auto; padding:16px; }
+			.overview-grid { gap:8px; margin-bottom:16px; }
+			.overview-card { padding:10px; gap:5px; }
+			.overview-card .ov-icon { width:26px; height:26px; font-size:.85rem; }
+			.overview-card .ov-label { font-size:.8rem; }
+			.overview-card .ov-number { font-size:1.15rem; }
+			.overview-card .ov-sub { font-size:.7rem; }
+		}
 	</style>
 </head>
 <body>
@@ -128,8 +162,6 @@
 					<button type="button" class="menu-item" id="exportBtn" role="menuitem"><span class="menu-icon">⬇️</span> Export data</button>
 					<button type="button" class="menu-item" id="importBtn" role="menuitem"><span class="menu-icon">⬆️</span> Import data</button>
 					<input type="file" id="importFile" accept="application/json" hidden />
-					<div class="menu-divider"></div>
-					<div class="menu-item placeholder" aria-disabled="true"><span><span class="menu-icon">🎨</span> Color theme</span><span class="soon-tag">Coming soon</span></div>
 				</div>
 			</div>
 		</header>
@@ -141,7 +173,7 @@
 	</main>
 	<div class="toast" id="toast"></div>
 
-	<dialog id="habitDialog"><h2 id="dialogTitle">Add a habit</h2><form id="habitForm"><label>Emoji<div class="emoji-picker"><button type="button" class="emoji-trigger" id="emojiTrigger" aria-label="Choose an emoji" aria-expanded="false">➕</button><div class="emoji-panel" id="emojiPanel" hidden><input class="emoji-search" id="emojiSearch" placeholder="Search emojis" aria-label="Search emojis" /><div class="emoji-options" id="emojiOptions"></div></div><input type="hidden" id="habitEmoji" value="" required /></div></label><label>Habit name<input id="habitName" required maxlength="60" placeholder="e.g. Read for 20 minutes" /></label><label>Note<input id="habitNote" maxlength="80" placeholder="Optional note" /></label><fieldset><legend>Frequency</legend><span class="error" id="frequencyError" role="alert"></span></fieldset><div class="form-actions"><button type="button" class="danger" id="deleteHabitBtn" hidden>🗑️ Delete</button><button type="button" class="cancel" id="cancelBtn">Cancel</button><button class="primary" id="saveHabitBtn">Add habit</button></div></form></dialog>
+	<dialog id="habitDialog"><h2 id="dialogTitle">Add a habit</h2><form id="habitForm"><div class="field">Emoji<div class="emoji-picker"><button type="button" class="emoji-trigger" id="emojiTrigger" aria-label="Choose an emoji" aria-expanded="false">➕</button><div class="emoji-panel" id="emojiPanel" hidden><input class="emoji-search" id="emojiSearch" placeholder="Search emojis" aria-label="Search emojis" /><div class="emoji-title" id="emojiTitle"></div><div class="emoji-options" id="emojiOptions"></div><div class="emoji-tabs" id="emojiTabs" role="tablist"></div></div><input type="hidden" id="habitEmoji" value="" required /></div></div><label>Habit name<input id="habitName" required maxlength="60" placeholder="e.g. Read for 20 minutes" /></label><label>Note<input id="habitNote" maxlength="80" placeholder="Optional note" /></label><fieldset><legend>Frequency</legend><span class="error" id="frequencyError" role="alert"></span></fieldset><div class="form-actions"><button type="button" class="danger" id="deleteHabitBtn" hidden>Delete</button><button type="button" class="cancel" id="cancelBtn">Cancel</button><button class="primary" id="saveHabitBtn">Add habit</button></div></form></dialog>
 	<dialog id="manageDialog"><h2>Manage Habits</h2><div class="manage-list" id="manageList"></div><div class="form-actions"><button type="button" class="cancel" id="manageCloseBtn">Close</button></div></dialog>
 	<script>
 		const key='habit-tracker-data';
@@ -150,8 +182,9 @@
 		let editingHabitId=null;
 		let selectedDate=todayKey();
 		const weekEndDate=new Date(`${selectedDate}T12:00:00`);
-		const emojiChoices=['💧','🏃','🥗','😴','🧘','📚','✍️','🎓','🎨','🎸','🧹','🌱','💰','📵','🐕','🌞','🙏','❤️','⭐','✅','🍎','☕','🚶','🏋️','🚴','🏊','🧠','💊','🧼','🦷','🌳','☀️','🌙','🎯','📝','💡','🎵','📖','🧩','🛌','🧘‍♀️','🤝','😊','😌','🔥','🚫','🏠','💻','📱','✈️','🌍','🐈','🐶','🍳','🥤','🍽️','🎮','🎬','🎤','🛒','🧺','🧴','🧘‍♂️','🌈','🌻','🌿','🍀','🍓','🍌','🍕','🍔','🍰','🍪','🥑','🥦','🫐','🧋','🥳','😎','🤗','😇','🫶','💪','👟','🚗','🚲','🛴','🏡','🛁','🧽','🧹','📦','📅','⏰','⌚','💵','💳','📈','💼','🗂️','🔑','🛠️','🔬','🔭','🧪','🌎','🌊','⛰️','🏖️','🏕️','🐝','🦋','🐢','🦄','🐼','🦊','🐸','🐙','🦁','🐯','🐨','🐵','🦜','🌺','🌸','🌼','🌷','🍁','🎉','🎁','🏆','🥇','🎲','♟️','🎹','🎧','🎥','📷','📌','📎','✏️','🖊️','📒','📓','📔','🔔','🔕','💬','💭','✔️','❌','⚡','💫','🌟','🔴','🟠','🟡','🟢','🔵','🟣','😂','🤣','😭','😍','🥰','😘','🙂','😁','👍','👏','🙌','👋','✌️','🤦','👀','🐱','🐻','🌹','🍷','🍺','🍫','🍣','🍩','🚀','🗺️','⚽','🏀','🎊'];
-		const emojiKeywords={'💧':'water drink hydration','🏃':'run exercise fitness','🥗':'food healthy salad','😴':'sleep rest','🧘':'meditation calm yoga','📚':'reading book study','✍️':'writing work','🎓':'school graduation study','🎨':'art creativity','🎸':'music guitar','🧹':'cleaning home','🌱':'plant gardening nature','💰':'money saving finance','📵':'phone offline','🐕':'dog pet','🌞':'sun morning','🙏':'gratitude prayer','❤️':'love self care','⭐':'star goal favorite','🍎':'apple fruit food','☕':'coffee drink','🚶':'walk exercise','🏋️':'weights gym exercise','🚴':'bike cycling exercise','🏊':'swim exercise','🧠':'mind brain learning','💊':'medicine health','🦷':'teeth dental','🌳':'tree nature','🌙':'moon night','🎯':'target goal focus','📝':'note writing','💡':'idea light','🎵':'music song','📖':'book reading','🛌':'bed sleep','🤝':'teamwork partnership','😊':'happy smile','💪':'strong fitness','👟':'shoes running','🚗':'car travel','✈️':'travel flight','🌍':'world travel','🐈':'cat pet','🍳':'breakfast food','🍕':'pizza food','🥑':'avocado food','🎮':'game gaming','🎬':'movie film','🎤':'sing music','📅':'calendar date','⏰':'time alarm','💼':'work business','🔬':'science','🌊':'water ocean','⛰️':'mountain nature','🏖️':'beach vacation','🐝':'bee insect','🦋':'butterfly nature','🦄':'unicorn','🐼':'panda animal','🦊':'fox animal','🌺':'flower','🌸':'flower','🎉':'party celebration','🎁':'gift','🏆':'winner achievement','🎲':'game dice','🎹':'piano music','🎧':'headphones music','📷':'camera photo','📌':'pin','✏️':'pencil writing','🔔':'notification bell','💬':'chat message','✔️':'check done','❌':'no wrong','⚡':'energy lightning','🌟':'star','🔴':'red','🟢':'green','🔵':'blue','😂':'laughing joy funny','🤣':'rofl laughing funny','😭':'crying sad tears','😍':'heart eyes love','🥰':'loving hearts affection','😘':'kiss love','🙂':'smile simple happy','😁':'grin happy smile','👍':'thumbs up approve good','👏':'clap applause well done','🙌':'praise hands up celebrate','👋':'wave hello bye','✌️':'peace victory','🤦':'facepalm frustrated','👀':'eyes look watch','🐱':'cat pet animal','🐻':'bear animal','🌹':'rose flower love','🍷':'wine drink alcohol','🍺':'beer drink alcohol','🍫':'chocolate sweet candy','🍣':'sushi food japanese','🍩':'donut sweet food','🚀':'rocket launch space','🗺️':'map travel','⚽':'soccer football sport','🏀':'basketball sport','🎊':'confetti celebration party'};
+		const emojiGroups=[
+			{"id": "health", "label": "Health", "icon": "🩺", "items": [["💧", "water drink hydration"], ["🚰", "water tap drink hydration"], ["🥛", "milk glass drink"], ["💊", "medicine vitamins pills supplements"], ["🩺", "doctor checkup health appointment"], ["🫁", "breathing lungs breathe"], ["🦷", "teeth dental floss"], ["🪥", "brush teeth toothbrush dental"], ["🚿", "shower wash"], ["🛁", "bath soak"], ["🧼", "soap wash hands hygiene"], ["🧴", "lotion skincare sunscreen"], ["🚭", "no smoking quit smoking"], ["🚫", "quit avoid stop no"], ["😴", "sleep rest nap"], ["🛌", "bed sleep bedtime"], ["🌙", "moon night bedtime"], ["🌅", "sunrise wake up early morning"], ["☀️", "sun morning daylight"], ["🌞", "sun morning"]]}, {"id": "food", "label": "Food & Drink", "icon": "🥗", "items": [["🥗", "salad healthy food"], ["🍎", "apple fruit"], ["🍓", "strawberry fruit"], ["🍌", "banana fruit"], ["🥑", "avocado healthy"], ["🥦", "broccoli vegetables"], ["🫐", "blueberries fruit"], ["🥕", "carrot vegetables"], ["🥬", "greens vegetables leafy"], ["🍊", "orange fruit"], ["🍇", "grapes fruit"], ["🍵", "tea green tea drink"], ["☕", "coffee drink"], ["🧋", "bubble tea drink"], ["🥤", "soda drink cup"], ["🍳", "breakfast eggs cook"], ["🥚", "egg protein"], ["🐟", "fish protein"], ["🍲", "cooking stew meal"], ["🍽️", "meal dinner eat"], ["🍬", "candy sugar sweets"], ["🍕", "pizza"], ["🍔", "burger fast food"], ["🍰", "cake dessert"], ["🍪", "cookie sweets"], ["🍫", "chocolate sweets"], ["🍩", "donut sweets"], ["🍣", "sushi"], ["🍷", "wine alcohol drink"], ["🍺", "beer alcohol drink"]]}, {"id": "fitness", "label": "Fitness", "icon": "🏋️", "items": [["🏃", "run running cardio jog"], ["🏃‍♀️", "run running jog cardio"], ["🚶", "walk walking steps"], ["🏋️", "weights gym strength lift"], ["💪", "strong muscle workout"], ["🚴", "bike cycling ride"], ["🚲", "bicycle bike"], ["🏊", "swim swimming"], ["🤸", "stretch stretching flexibility gymnastics"], ["🥾", "hike hiking trail boots"], ["🧗", "climb climbing"], ["🥊", "boxing punch"], ["🎾", "tennis"], ["🏐", "volleyball"], ["⚽", "soccer football"], ["🏀", "basketball"], ["⛷️", "ski skiing snow"], ["🏄", "surf surfing"], ["💃", "dance dancing"], ["👟", "shoes sneakers running"], ["🔥", "burn calories energy"]]}, {"id": "mind", "label": "Mind & Focus", "icon": "🧠", "items": [["🧠", "brain mind learning"], ["📚", "books reading study"], ["📖", "book reading"], ["✍️", "writing journal"], ["📝", "notes writing list"], ["✏️", "pencil writing"], ["🎓", "study school learning graduation"], ["🌐", "language learning web internet"], ["🗣️", "speaking language practice talk"], ["🎙️", "podcast microphone record"], ["🧑‍💻", "coding programming developer"], ["⌨️", "typing keyboard coding"], ["💻", "laptop computer work"], ["📱", "phone screen time"], ["📵", "no phone offline screen detox"], ["🔕", "silence mute notifications"], ["🔔", "reminder alarm notification bell"], ["💡", "idea creativity"], ["🔬", "science microscope"], ["🧪", "experiment science"], ["🔭", "astronomy stars telescope"], ["🎯", "goal target focus"], ["⭐", "star goal favorite"], ["✅", "done check complete task"], ["⏰", "alarm wake time"], ["⌚", "watch time"], ["⏳", "timer hourglass time focus"], ["📅", "calendar date plan"], ["🗓️", "calendar planning schedule"], ["📋", "checklist to-do list plan"]]}, {"id": "creative", "label": "Creative & Hobbies", "icon": "🎨", "items": [["🎨", "art painting palette"], ["🖼️", "painting art picture drawing"], ["🖌️", "paint brush painting"], ["🎸", "guitar music practice"], ["🎹", "piano keyboard music"], ["🎻", "violin music"], ["🥁", "drums music"], ["🎷", "saxophone music"], ["🎺", "trumpet music"], ["🎤", "sing singing microphone"], ["🎵", "music song"], ["🎧", "headphones music listen"], ["🧶", "knitting crochet yarn"], ["📷", "photo photography camera"], ["🎥", "video film camera"], ["🎬", "movie film watch"], ["🎮", "video games gaming"], ["🎲", "board game dice"], ["♟️", "chess game"], ["🧩", "puzzle"]]}, {"id": "self", "label": "Self-care & Social", "icon": "🙏", "items": [["🧘", "meditation yoga calm mindfulness"], ["🙏", "gratitude prayer thankful"], ["📿", "prayer beads rosary"], ["🕯️", "candle relax meditation"], ["😊", "happy smile"], ["😌", "calm relaxed peaceful"], ["❤️", "love self care heart"], ["🫶", "love care heart hands"], ["🤝", "friends teamwork handshake"], ["💌", "letter love note"], ["📞", "call phone family friends"], ["💬", "chat message text"], ["💭", "thoughts reflect think"], ["👨‍👩‍👧", "family kids time"], ["🧑‍🤝‍🧑", "friends social people"], ["👶", "baby child kids"], ["🧸", "kids toy play"]]}, {"id": "home", "label": "Home", "icon": "🏠", "items": [["🧹", "clean sweep chores"], ["🧺", "laundry basket"], ["🧽", "sponge scrub dishes clean"], ["🗑️", "trash garbage bin take out"], ["🪴", "water plants houseplant"], ["🛏️", "make bed bedroom"], ["👕", "laundry clothes shirt"], ["📬", "mail post inbox"], ["🔧", "fix repair tools"], ["🛠️", "tools repair fix"], ["🛒", "shopping groceries"], ["🏠", "home house"], ["🏡", "home house garden"], ["📦", "packing boxes declutter"], ["🔑", "keys home"], ["🚗", "car drive wash"]]}, {"id": "money", "label": "Money & Work", "icon": "💼", "items": [["💼", "work job business"], ["📧", "email inbox"], ["📈", "growth progress investing"], ["📊", "tracking stats budget"], ["💰", "money saving"], ["💵", "cash money budget"], ["💸", "spending expenses money"], ["💳", "card bills payment"], ["🏦", "bank savings"], ["🧾", "receipts expenses track"], ["🏆", "trophy goal win"], ["🥇", "gold medal win"]]}, {"id": "pets", "label": "Pets & Nature", "icon": "🐾", "items": [["🐶", "dog pet"], ["🐕", "dog walk pet"], ["🦮", "walk dog guide dog"], ["🐱", "cat pet"], ["🐈", "cat pet"], ["🐠", "fish tank aquarium pet"], ["🐾", "paws pet walk"], ["🌱", "plant seedling gardening"], ["🌿", "herb plant garden"], ["🌳", "tree nature outdoors"], ["🌻", "sunflower garden"], ["🍀", "clover luck nature"], ["🏕️", "camping outdoors"], ["⛰️", "mountain hiking nature"], ["🏖️", "beach vacation"], ["🌊", "ocean waves water"]]}
+		];
 		const $=s=>document.querySelector(s);
 
 		// ---- Frequency form controls ----
@@ -173,7 +206,24 @@
 		frequencyType.onchange=updateFrequencyControls;
 		updateFrequencyControls();
 
-		function renderEmojiOptions(search=''){const query=search.trim().toLowerCase(); $('#emojiOptions').innerHTML=emojiChoices.filter(emoji=>!query||(emoji+' '+(emojiKeywords[emoji]||'')).toLowerCase().includes(query)).map(emoji=>`<button type="button" data-emoji="${emoji}" aria-label="Select ${emoji}" title="${emoji}">${emoji}</button>`).join('')||'<span class="label">No emojis found</span>';}
+		let emojiTab=emojiGroups[0].id;
+		function renderEmojiTabs(searching=false){$('#emojiTabs').innerHTML=emojiGroups.map(g=>`<button type="button" class="emoji-tab ${!searching&&g.id===emojiTab?'active':''}" data-tab="${g.id}" role="tab" aria-selected="${!searching&&g.id===emojiTab}" aria-label="${g.label}" title="${g.label}">${g.icon}</button>`).join('');}
+		function renderEmojiOptions(search=''){
+			const query=search.trim().toLowerCase();
+			let list;
+			if(query){
+				const seen=new Set();
+				list=[];
+				emojiGroups.forEach(g=>g.items.forEach(([emoji,words])=>{if(!seen.has(emoji)&&(emoji+' '+words+' '+g.label).toLowerCase().includes(query)){seen.add(emoji);list.push(emoji);}}));
+			}else{
+				list=(emojiGroups.find(g=>g.id===emojiTab)||emojiGroups[0]).items.map(i=>i[0]);
+			}
+			renderEmojiTabs(Boolean(query));
+			$('#emojiTitle').textContent=query?'Search results':(emojiGroups.find(g=>g.id===emojiTab)||emojiGroups[0]).label;
+			$('#emojiOptions').innerHTML=list.map(emoji=>`<button type="button" data-emoji="${emoji}" aria-label="Select ${emoji}" title="${emoji}">${emoji}</button>`).join('')||'<span class="label emoji-empty">No emojis found</span>';
+		}
+		function selectEmojiTabFor(emoji){const g=emojiGroups.find(g=>g.items.some(i=>i[0]===emoji)); emojiTab=g?g.id:emojiGroups[0].id; renderEmojiOptions($('#emojiSearch').value);}
+		$('#emojiTabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]'); if(!b)return; emojiTab=b.dataset.tab; $('#emojiSearch').value=''; renderEmojiOptions();});
 		renderEmojiOptions();
 		$('#date').textContent=new Intl.DateTimeFormat(undefined,{weekday:'long',month:'long',day:'numeric'}).format(new Date());
 
@@ -192,6 +242,7 @@
 			return {
 				id: raw.id||Date.now()+Math.floor(Math.random()*1000),
 				emoji: raw.emoji||'✅',
+				colorIndex: Number.isInteger(raw.colorIndex)?((raw.colorIndex%4)+4)%4:null,
 				name: raw.name||'Untitled habit',
 				note: raw.note||'',
 				frequencyType,
@@ -205,6 +256,8 @@
 			};
 		}
 		let habits=(JSON.parse(localStorage.getItem(key)||'null')||[]).map(normalizeHabit);
+		function ensureColors(){habits.forEach((h,i)=>{if(!Number.isInteger(h.colorIndex))h.colorIndex=i%4;});}
+		ensureColors();
 
 		function save(){localStorage.setItem(key,JSON.stringify(habits)); render();}
 		function formatDate(date,options){return new Intl.DateTimeFormat(undefined,options).format(date);}
@@ -247,7 +300,7 @@
 		function scheduleLabel(h){if(h.frequencyType==='Daily')return 'Daily'; if(h.frequencyType==='Weekly')return `${h.target}x per week`; return `${h.target}x per month`;}
 
 		// ---- Flexible period helpers (weeks start Sunday) ----
-		function weekStart(date){const d=new Date(date); d.setDate(d.getDate()-d.getDay()); return d;}
+		function weekStart(date){const d=new Date(date); const day=d.getDay(); const diff=(day===0?6:day-1); d.setDate(d.getDate()-diff); return d;}
 		function weekEnd(date){const d=weekStart(date); d.setDate(d.getDate()+6); return d;}
 		function monthStart(date){return new Date(date.getFullYear(),date.getMonth(),1,12);}
 		function monthEnd(date){return new Date(date.getFullYear(),date.getMonth()+1,0,12);}
@@ -300,7 +353,7 @@
 				const periodWord=h.frequencyType==='Weekly'?'week':'month';
 				progressHtml=`<div class="habit-meta"><span>${count} of ${target} this ${periodWord}</span></div><div class="progress"><i style="width:${pct}%"></i></div>`;
 			}
-			return `<article class="card habit ${done?'done':''}"><span class="emoji" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><div class="habit-content"><div class="habit-heading"><h3>${escapeHtml(h.name)}</h3><span class="streak"><span class="fire ${h.justCompletedDate===dateKeyStr?'fire-pop':''}">🔥</span> ${h.streak||0}</span></div>${progressHtml}</div><button class="check" data-id="${h.id}" aria-label="Mark ${h.name} complete" ${future?'disabled':''}>${done?'✓':''}</button></article>`;
+			return `<article class="card habit ${done?'done':''}"><span class="emoji c${h.colorIndex??0}" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><div class="habit-content"><div class="habit-heading"><h3>${escapeHtml(h.name)}</h3><span class="streak"><span class="fire ${h.justCompletedDate===dateKeyStr?'fire-pop':''}">🔥</span> ${h.streak||0}</span></div>${progressHtml}</div><button class="check" data-id="${h.id}" aria-label="Mark ${h.name} complete" ${future?'disabled':''}>${done?'✓':''}</button></article>`;
 		}
 		habits.forEach(recalculateStreak);
 		function render(){
@@ -345,10 +398,10 @@
 		function openHabitDialog(habit=null){
 			editingHabitId=habit?.id||null;
 			$('#dialogTitle').textContent=habit?'Edit habit':'Add a habit';
-			$('#saveHabitBtn').textContent=habit?'Save changes':'Add habit';
+			$('#saveHabitBtn').textContent=habit?'Save':'Add habit';
 			$('#deleteHabitBtn').hidden=!habit;
 			$('#habitEmoji').value=habit?.emoji||''; $('#emojiTrigger').textContent=habit?.emoji||'➕';
-			$('#emojiSearch').value=''; $('#emojiPanel').hidden=true; renderEmojiOptions();
+			$('#emojiSearch').value=''; $('#emojiPanel').hidden=true; selectEmojiTabFor(habit?.emoji);
 			$('#habitName').value=habit?.name||'';
 			$('#habitNote').value=habit?.note||'';
 			frequencyType.value=habit?.frequencyType||'Daily';
@@ -361,7 +414,7 @@
 		$('#cancelBtn').onclick=()=>$('#habitDialog').close();
 		function positionEmojiPanel(){const panel=$('#emojiPanel'), formRect=$('#habitForm').getBoundingClientRect(), triggerRect=$('#emojiTrigger').getBoundingClientRect(); panel.style.top=(triggerRect.bottom-formRect.top+6)+'px';}
 		$('#emojiTrigger').onclick=()=>{const panel=$('#emojiPanel'); const opening=panel.hidden; if(opening){positionEmojiPanel();} panel.hidden=!opening; $('#emojiTrigger').setAttribute('aria-expanded',String(opening));}; $('#emojiSearch').oninput=e=>renderEmojiOptions(e.target.value); $('#emojiOptions').onclick=e=>{if(!e.target.dataset.emoji)return;$('#habitEmoji').value=e.target.dataset.emoji;$('#emojiTrigger').textContent=e.target.dataset.emoji;$('#emojiPanel').hidden=true;$('#emojiTrigger').setAttribute('aria-expanded','false');};
-		document.addEventListener('click',e=>{const panel=$('#emojiPanel'); if(!panel.hidden && !panel.contains(e.target) && e.target!==$('#emojiTrigger')){panel.hidden=true; $('#emojiTrigger').setAttribute('aria-expanded','false');}});
+		document.addEventListener('click',e=>{const panel=$('#emojiPanel'), path=e.composedPath(); if(!panel.hidden && !path.includes(panel) && !path.includes($('#emojiTrigger'))){panel.hidden=true; $('#emojiTrigger').setAttribute('aria-expanded','false');}});
 		$('#deleteHabitBtn').onclick=()=>{const habit=habits.find(h=>h.id===editingHabitId); if(!habit)return; if(!window.confirm(`Delete "${habit.name}"? This cannot be undone.`))return; habits=habits.filter(h=>h.id!==editingHabitId); editingHabitId=null; save(); $('#habitDialog').close();};
 		$('#habitForm').onsubmit=e=>{
 			e.preventDefault();
@@ -377,7 +430,7 @@
 			$('#frequencyError').textContent='';
 			const values={emoji:$('#habitEmoji').value,name:nameVal,note:$('#habitNote').value.trim(),frequencyType:frequency,target:target};
 			if(editingHabitId){const habit=habits.find(h=>h.id===editingHabitId); Object.assign(habit,values); recalculateStreak(habit);}
-			else{habits.push({id:Date.now(),...values,done:false,streak:0,completions:0,history:[],lastCompleted:null,justCompletedDate:null});}
+			else{habits.push({id:Date.now(),colorIndex:habits.length%4,...values,done:false,streak:0,completions:0,history:[],lastCompleted:null,justCompletedDate:null});}
 			save();
 			editingHabitId=null;
 			e.target.reset();
@@ -394,13 +447,13 @@
 		function closeSettingsMenu(){settingsMenu.hidden=true; settingsBtn.setAttribute('aria-expanded','false');}
 		function openSettingsMenu(){settingsMenu.hidden=false; settingsBtn.setAttribute('aria-expanded','true');}
 		settingsBtn.onclick=e=>{e.stopPropagation(); settingsMenu.hidden?openSettingsMenu():closeSettingsMenu();};
-		document.addEventListener('click',e=>{if(!settingsMenu.hidden && !settingsMenu.contains(e.target) && e.target!==settingsBtn)closeSettingsMenu();});
+		document.addEventListener('click',e=>{const path=e.composedPath(); if(!settingsMenu.hidden && !path.includes(settingsMenu) && !path.includes(settingsBtn))closeSettingsMenu();});
 		document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSettingsMenu();});
 		$('#addBtn').onclick=()=>{closeSettingsMenu(); openHabitDialog();};
 
 		// ---- Manage Habits ----
 		function renderManageList(){
-			$('#manageList').innerHTML=habits.length?habits.map(h=>`<button type="button" class="manage-row" data-manage-edit="${h.id}"><span class="emoji" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><span class="manage-row-name">${escapeHtml(h.name)}</span><span class="manage-row-arrow">›</span></button>`).join(''):'<p class="label">No habits yet.</p>';
+			$('#manageList').innerHTML=habits.length?habits.map(h=>`<button type="button" class="manage-row" data-manage-edit="${h.id}"><span class="emoji c${h.colorIndex??0}" aria-hidden="true">${escapeHtml(h.emoji||'✅')}</span><span class="manage-row-name">${escapeHtml(h.name)}</span><span class="manage-row-arrow">›</span></button>`).join(''):'<p class="label">No habits yet.</p>';
 		}
 		$('#manageBtn').onclick=()=>{closeSettingsMenu(); renderManageList(); $('#manageDialog').showModal();};
 		$('#manageCloseBtn').onclick=()=>$('#manageDialog').close();
@@ -431,6 +484,7 @@
 				if(!imported){window.alert('That file does not look like a habit tracker backup.'); return;}
 				if(!window.confirm(`Import ${imported.length} habit(s)? This will replace your current data.`))return;
 				habits=imported.map(normalizeHabit);
+				ensureColors();
 				habits.forEach(recalculateStreak);
 				save();
 				showToast('Backup imported');
