@@ -123,14 +123,14 @@
 			header { align-items:center; flex-direction:row; margin-bottom:16px; }
 			header h1 { font-size:1.3rem; margin:0 0 3px; }
 			header p { font-size:.8rem; }
-			.icon-btn { padding:8px 9px; font-size:.95rem; }
-			.week-nav { padding:8px 9px; font-size:.95rem; }
+			.icon-btn { padding:12px 13px; font-size:1rem; }
+			.week-nav { padding:12px 13px; font-size:1rem; }
 			.section-title { margin:20px 0 10px; }
 			h2 { font-size:1rem; }
 			.card { padding:14px; }
 			.habit { gap:10px; padding:12px; }
 			.emoji { width:40px; height:40px; font-size:1.3rem; }
-			.check { width:36px; height:36px; font-size:.95rem; }
+			.check { width:44px; height:44px; font-size:1.05rem; }
 			.habit-heading { gap:6px; }
 			h3 { font-size:.95rem; }
 			.streak { font-size:.85rem; }
@@ -259,7 +259,7 @@
 		function ensureColors(){habits.forEach((h,i)=>{if(!Number.isInteger(h.colorIndex))h.colorIndex=i%4;});}
 		ensureColors();
 
-		function save(){localStorage.setItem(key,JSON.stringify(habits)); render();}
+		function save(skipRender){localStorage.setItem(key,JSON.stringify(habits)); if(!skipRender)render();}
 		function formatDate(date,options){return new Intl.DateTimeFormat(undefined,options).format(date);}
 		function renderOverview(){
 			const todayK=todayKey();
@@ -389,8 +389,20 @@
 			if(date===todayKey()){h.done=!wasDone;h.lastCompleted=wasDone?h.lastCompleted:date;}
 			h.justCompletedDate=pop?date:null;
 			recalculateStreak(h);
-			save();
-			if(pop)setTimeout(()=>{h.justCompletedDate=null;},500);
+			if(!wasDone){
+				// Optimistic instant feedback: check the box now, reorder the list a moment later.
+				const card=e.target.closest('.habit');
+				e.target.textContent='✓';
+				e.target.disabled=true;
+				if(card)card.classList.add('done');
+				save(true);
+				setTimeout(()=>{
+					render();
+					if(pop)setTimeout(()=>{h.justCompletedDate=null;},500);
+				},600);
+			}else{
+				save();
+			}
 		}
 		$('#habitList').addEventListener('click',handleHabitClick);
 		$('#weekDays').addEventListener('click',e=>{const button=e.target.closest('[data-week-date]'); if(button){selectedDate=button.dataset.weekDate; weekEndDate.setTime(new Date(`${selectedDate}T12:00:00`).getTime()); render();}}); $('#previousWeek').onclick=()=>{weekEndDate.setDate(weekEndDate.getDate()-1); selectedDate=keyForDate(weekEndDate); render();}; $('#nextWeek').onclick=()=>{const today=new Date(`${todayKey()}T12:00:00`); if(weekEndDate<today){weekEndDate.setDate(weekEndDate.getDate()+1); selectedDate=keyForDate(weekEndDate); render();}};
