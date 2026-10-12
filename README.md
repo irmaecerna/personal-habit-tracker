@@ -2,6 +2,16 @@
 
 A simple habit tracker that runs in your browser. No sign up, no install, no server. Everything is in one HTML file.
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshot-mobile.png" width="250" alt="Home screen on a phone with the Quick Overview and habit list">
+  <img src="screenshot-add-habit.png" width="250" alt="Add a habit screen with a weekly goal">
+  <img src="screenshot-emoji-picker.png" width="250" alt="Emoji picker with category tabs">
+</p>
+
+![Desktop view of the habit tracker](screenshot-desktop.png)
+
 ## Features
 
 - **Daily, weekly and monthly habits.** Set a habit to repeat every day, or choose a goal like "3 times per week" or "10 times per month". The specific days do not matter.
@@ -48,3 +58,7 @@ To change or delete a habit, open settings and choose **Manage Habits**.
 ## Built with
 
 Plain HTML, CSS and JavaScript. No libraries, no build step.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE.txt` file for details.
